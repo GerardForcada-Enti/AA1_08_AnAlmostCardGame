@@ -67,11 +67,14 @@ Game::Game()
 
 Card Game::GetNewCard()
 {
-	return Card();
+	Card aux = this->m_deck.top();
+	this->m_deck.pop();
+	return aux;
 }
 
 void Game::DiscardeCard(Card c)
 {
+	this->m_undeck.push(c);
 }
 
 void Game::PrintDiscarded()
