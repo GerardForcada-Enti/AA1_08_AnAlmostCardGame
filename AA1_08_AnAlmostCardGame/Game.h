@@ -16,5 +16,5 @@ private:
 	std::stack<Card> m_deck;
 	std::stack<Card> m_undeck;
 
-	std::string m_rand_names[] = { "Hipolito","Pancracia","Eustaquio","Socrates","Steve","Juliana", "Amanda" };
+	std::string m_rand_names[7] = { "Hipolito","Pancracia","Eustaquio","Socrates","Steve","Juliana", "Amanda" };
 };

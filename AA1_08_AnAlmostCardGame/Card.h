@@ -16,7 +16,7 @@ public:
 	Suit m_suit;
 	short m_value;
 
-	bool friend operator== (const Card& card1, const Card& card2)
+	friend bool operator== (const Card& card1, const Card& card2)
 	{
 		return card1.m_suit == card2.m_suit && card1.m_value == card2.m_value;
 	}
