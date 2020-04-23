@@ -64,15 +64,31 @@ void Player::Order()
 	std::vector<Card> clups;
 	for (std::vector<Card>::iterator it = this->m_hand.begin(); it != m_hand.end(); ++it)
 	{
-		if ((int)&it->m_suit == (int)Suit::SPADES)spades.push_back(*it);
-		if ((int)&it->m_suit == (int)Suit::COINS)coins.push_back(*it);
-		if ((int)&it->m_suit == (int)Suit::CUPS)cups.push_back(*it);
-		if ((int)&it->m_suit == (int)Suit::CLUBS)clups.push_back(*it);
+		if ((int)&it->m_suit == (int)Suit::SPADES)spades.push_back(Card(Suit::SPADES,it->m_value));
+		if ((int)&it->m_suit == (int)Suit::COINS)coins.push_back(Card(Suit::COINS, it->m_value));
+		if ((int)&it->m_suit == (int)Suit::CUPS)cups.push_back(Card(Suit::CUPS, it->m_value));
+		if ((int)&it->m_suit == (int)Suit::CLUBS)clups.push_back(Card(Suit::CLUBS, it->m_value));
 	}
-	int i, j;
-	for (i = 0; i < spades.size() - 1; i++)
+	/*
+	for (std::vector<Card>::iterator it = spades.begin(); it != spades.end()&&spades.size() != 0; ++it)
 	{
-		for (j = 0; j < spades.size() - i - 1; j++)
+		for (std::vector<Card>::iterator it2 = spades.begin()+1; it2 != spades.end(); ++it2)
+		{
+			if (&it->m_value > &it2->m_value)
+			{
+				short aux = it->m_value;
+				it->m_value = it2->m_value;
+				it2->m_value = aux;
+			}
+		}
+	}
+	*/
+
+	
+	int i, j;
+	for (i = 0; i < spades.size() - 1 && spades.size() != 0; i++)
+	{
+		for (j = 0; j < spades.size() - i; j++)
 			if (spades[j].m_value > spades[j + 1].m_value)
 			{
 				short aux = spades[j].m_value;
@@ -80,9 +96,10 @@ void Player::Order()
 				spades[j + 1].m_value = aux;
 			}
 	}
-	for (i = 0; i < coins.size() - 1; i++)
+
+	for (i = 0; i < coins.size() - 1 && coins.size() != 0; i++)
 	{
-		for (j = 0; j < coins.size() - i - 1; j++)
+		for (j = 0; j < coins.size() - i; j++)
 			if (coins[j].m_value > coins[j + 1].m_value)
 			{
 				short aux = coins[j].m_value;
@@ -90,9 +107,9 @@ void Player::Order()
 				coins[j + 1].m_value = aux;
 			}
 	}
-	for (i = 0; i < cups.size() - 1; i++)
+	for (i = 0; i < cups.size() - 1 && cups.size() != 0; i++)
 	{
-		for (j = 0; j < cups.size() - i - 1; j++)
+		for (j = 0; j < cups.size() - i; j++)
 			if (cups[j].m_value > cups[j + 1].m_value)
 			{
 				short aux = cups[j].m_value;
@@ -100,9 +117,9 @@ void Player::Order()
 				cups[j + 1].m_value = aux;
 			}
 	}
-	for (i = 0; i < clups.size() - 1; i++)
+	for (i = 0; i < clups.size() - 1 && clups.size() != 0; i++)
 	{
-		for (j = 0; j < clups.size() - i - 1; j++)
+		for (j = 0; j < clups.size() - i; j++)
 			if (clups[j].m_value > clups[j + 1].m_value)
 			{
 				short aux = clups[j].m_value;
@@ -110,6 +127,7 @@ void Player::Order()
 				clups[j + 1].m_value = aux;
 			}
 	}
+	
 
 	this->m_hand.erase(this->m_hand.begin(), m_hand.end());
 

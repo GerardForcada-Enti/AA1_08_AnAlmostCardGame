@@ -36,7 +36,7 @@ Game::Game()
 	{
 		int var = rand() % aux.size();
 		this->m_deck.push(aux[var]);
-		aux.erase(aux.begin() + var - 1);
+		aux.pop_back();
 	}
 
 	for (int i = 0; i < (4 * 7); ++i)
